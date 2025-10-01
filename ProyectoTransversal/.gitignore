@@ -1,0 +1,36 @@
+# Archivos de compilación
+/build/
+/dist/
+/nbproject/private/
+
+# Archivos de NetBeans
+nbproject/private/
+nbproject/Makefile-*
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+
+# Archivos generados por IDEs
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven / Gradle (si tu proyecto los usa)
+target/
+.idea/
+.gradle/
+*.iml
+
+# Archivos de configuración local
+*.properties
+*.settings/
