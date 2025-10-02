@@ -16,13 +16,20 @@ public class Alumno {
     private String apellido;
     private int dni;
     private Date FechaNacimiento;
+    private boolean estado;
 
-    public Alumno(int legajo, String nombre, String apellido, int dni, Date FechaNacimiento) {
+    public Alumno() {
+    }
+    
+    
+
+    public Alumno(int legajo, String nombre, String apellido, int dni, Date FechaNacimiento, boolean estado) {
         this.legajo = legajo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.FechaNacimiento = FechaNacimiento;
+        this.estado = estado;
     }
 
     public int getLegajo() {
@@ -63,6 +70,14 @@ public class Alumno {
 
     public void setFechaNacimiento(Date FechaNacimiento) {
         this.FechaNacimiento = FechaNacimiento;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
     
     
