@@ -6,7 +6,7 @@ package Persistencia;
 
 /**
  *
- * @author elias
+ * @author crist
  */
 public class AlumnoData {
     

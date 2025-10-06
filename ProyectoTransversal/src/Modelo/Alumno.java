@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  *
- * @author elias
+ * @author crist
  */
 public class Alumno {
     private int legajo;
@@ -79,8 +79,4 @@ public class Alumno {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
-    
-    
-    
 }
