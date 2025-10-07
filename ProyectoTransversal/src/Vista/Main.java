@@ -4,6 +4,12 @@
  */
 package Vista;
 
+import Modelo.Alumno;
+import Modelo.Conexion;
+import Persistencia.AlumnoData;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author crist
@@ -15,6 +21,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        AlumnoData al = new AlumnoData();
+        List<Alumno> als = new ArrayList();
+        als = al.getAll();
+        for (Alumno al1 : als) {
+            System.out.println("a");
+            System.out.println(al1.getApellido());
+        }
     }
     
 }

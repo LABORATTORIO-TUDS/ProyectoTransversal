@@ -4,7 +4,6 @@
  */
 package Modelo;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,22 +13,37 @@ import java.sql.SQLException;
  * @author elias
  */
 public class Conexion {
+
+    private static Connection c = null;
+
     private static final String URL = "jdbc:mysql://localhost:3306/gp13universidadulp";
     private static final String USUARIO = "root";
-    private static final String CLAVE = ""; 
+    private static final String CLAVE = "root";
 
     public static Connection conectar() {
-        Connection conexion = null;
-        try {
-            conexion = DriverManager.getConnection(URL, USUARIO, CLAVE);
-            System.out.println("✅ Conexion exitosa a la base de datos.");
-        } catch (SQLException e) {
-            System.out.println("❌ Error en la conexion: " + e.getMessage());
+        if (c == null) {
+            try {
+                c = DriverManager.getConnection(URL, USUARIO, CLAVE);
+                System.out.println("✅ Conexion exitosa a la base de datos.");
+            } catch (SQLException e) {
+                System.out.println("❌ Error en la conexion: " + e.getMessage());
+                return null;
+            }
         }
-        return conexion;
+         return c;
+    }
+   
+
+    public static void cerrarConexion() {
+        try {
+            if (c != null) {
+                c.close();
+                System.out.println("Conexion cerrada");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al cerrar la conexion: "+ e);
+                  
+        }
     }
 
-
-        Connection c = Conexion.conectar();
-    
 }
