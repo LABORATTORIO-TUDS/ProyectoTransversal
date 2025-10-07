@@ -7,6 +7,7 @@ package Persistencia;
 import Modelo.Alumno;
 import Modelo.Conexion;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -69,6 +70,25 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al obtener los alumnos: " + e.getMessage());
         }
         return als;
+    }
+
+    public Alumno buscarPorId(int id) {
+        Alumno al = null;
+        String sql = "SELECT * FROM " + this.tabla + " WHERE idAlumno = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                al = new Alumno(rs.getInt("idAlumno"),
+                        rs.getString("nombre"), rs.getString("apellido"), rs.getInt("dni"), rs.getDate("fechaNacimiento").toLocalDate(), rs.getBoolean("estado"));
+            }
+            ps.close();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar alumno: " + e.getMessage());
+        
+        }
+        return al;
     }
 
     public void actualizar(Alumno al) {
@@ -143,7 +163,7 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
         }
     }
-    
+
     public void altaLogica(int id) {
         try {
             String sql = "UPDATE alumno SET estado = 1 WHERE idAlumno = ?";
@@ -164,34 +184,34 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
         }
     }
-    
-    public void nuevoAlumno(Alumno al){
-    
+
+    public void nuevoAlumno(Alumno al) {
+
         String consulta = "INSERT INTO alumno (dni, apellido, nombre, fechaNacimiento, estado) VALUES (?,?,?,?, 1)";
-        
+
         try {
-           PreparedStatement ps = con.prepareStatement(consulta, Statement.RETURN_GENERATED_KEYS);
-           
-           ps.setInt(1, al.getDni());
-           ps.setString(2, al.getApellido());
-           ps.setString(3, al.getNombre());
-           ps.setDate(4, java.sql.Date.valueOf(al.getFechaNacimiento()));
-           
-           ps.executeUpdate();
-           
-           ResultSet rs = ps.getGeneratedKeys();
-           
+            PreparedStatement ps = con.prepareStatement(consulta, Statement.RETURN_GENERATED_KEYS);
+
+            ps.setInt(1, al.getDni());
+            ps.setString(2, al.getApellido());
+            ps.setString(3, al.getNombre());
+            ps.setDate(4, java.sql.Date.valueOf(al.getFechaNacimiento()));
+
+            ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+
             if (rs.next()) {
                 al.setLegajo(rs.getInt(1));
-                JOptionPane.showMessageDialog(null,"Alumno añadido correctamente");
+                JOptionPane.showMessageDialog(null, "Alumno añadido correctamente");
             }
-            
+
             ps.close();
-           
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno");
         }
-        
+
     }
 
 }

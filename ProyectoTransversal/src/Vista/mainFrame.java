@@ -231,6 +231,20 @@ public class mainFrame extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+    int id = Integer.parseInt(txtfID.getText());
+    AlumnoData alumnoData = new AlumnoData();
+    Alumno al = alumnoData.buscarPorId(id);
+    
+    if (al != null) {
+        txtfNombre.setText(al.getNombre());
+        txtfApellido.setText(al.getApellido());
+        txtfDNI.setText(String.valueOf(al.getDni()));
+        
+        txtfFecha.setText(al.getFechaNacimiento().toString());
+        
+    } else {
+        JOptionPane.showMessageDialog(null, "No se encontró alumno con el ID: " + id);
+    }
 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
