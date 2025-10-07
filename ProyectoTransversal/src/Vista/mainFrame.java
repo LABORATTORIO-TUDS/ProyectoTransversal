@@ -89,8 +89,18 @@ public class mainFrame extends javax.swing.JFrame {
         });
 
         btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         lblApellido.setText("Apellido:");
 
@@ -294,6 +304,37 @@ public class mainFrame extends javax.swing.JFrame {
     }
 
     }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(txtfID.getText());
+            int dni = Integer.parseInt(txtfDNI.getText());
+            String apellido = txtfApellido.getText();
+            String nombre = txtfNombre.getText();
+            LocalDate fechaNac = LocalDate.parse(txtfFecha.getText()); // formato yyyy-MM-dd
+
+            Alumno al = new Alumno(id, nombre, apellido, dni, fechaNac, true);
+
+            AlumnoData ad = new AlumnoData();
+            ad.actualizar(al);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El ID y el DNI deben ser números válidos");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar: " + e.getMessage());
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+         txtfID.setText("");
+        txtfNombre.setText("");
+        txtfApellido.setText("");
+        txtfDNI.setText("");
+        txtfFecha.setText("");
+        chboxActivo.setSelected(false);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments

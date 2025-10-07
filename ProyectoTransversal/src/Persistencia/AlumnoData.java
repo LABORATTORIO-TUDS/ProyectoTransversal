@@ -101,7 +101,7 @@ public class AlumnoData {
 
             ps.setInt(1, al.getDni());
             ps.setString(2, al.getApellido());
-            ps.setString(2, al.getNombre());
+            ps.setString(3, al.getNombre());
             ps.setDate(4, java.sql.Date.valueOf(al.getFechaNacimiento()));
             ps.setInt(5, al.getLegajo());
 
