@@ -36,7 +36,7 @@ public class AlumnoData {
             while (rs.next()) {
                 Alumno al = new Alumno(rs.getInt("idAlumno"),
                         rs.getString("nombre"), rs.getString("apellido"),
-                        rs.getInt("dni"), rs.getDate("fechaNacimiento"),
+                        rs.getInt("dni"), rs.getDate("fechaNacimiento").toLocalDate(),
                         rs.getBoolean("estado"));
                 als.add(al);
             }
@@ -59,7 +59,7 @@ public class AlumnoData {
             while (rs.next()) {
                 Alumno al = new Alumno(rs.getInt("idAlumno"),
                         rs.getString("nombre"), rs.getString("apellido"),
-                        rs.getInt("dni"), rs.getDate("fechaNacimiento"),
+                        rs.getInt("dni"), rs.getDate("fechaNacimiento").toLocalDate(),
                         rs.getBoolean("estado"));
                 als.add(al);
             }
@@ -82,7 +82,7 @@ public class AlumnoData {
             ps.setInt(1, al.getDni());
             ps.setString(2, al.getApellido());
             ps.setString(2, al.getNombre());
-            ps.setDate(4, (Date) al.getFechaNacimiento());
+            ps.setDate(4, java.sql.Date.valueOf(al.getFechaNacimiento()));
             ps.setInt(5, al.getLegajo());
 
             int res = ps.executeUpdate();
@@ -101,7 +101,7 @@ public class AlumnoData {
     }
 
     public void delete(Alumno al) {
-        String consulta = "DELETE " + this.tabla + " WHERE idAlumno=?";
+        String consulta = "DELETE FROM " + this.tabla + " WHERE idAlumno = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(consulta);
@@ -175,7 +175,7 @@ public class AlumnoData {
            ps.setInt(1, al.getDni());
            ps.setString(2, al.getApellido());
            ps.setString(3, al.getNombre());
-           ps.setDate(4, (Date) al.getFechaNacimiento());
+           ps.setDate(4, java.sql.Date.valueOf(al.getFechaNacimiento()));
            
            ps.executeUpdate();
            

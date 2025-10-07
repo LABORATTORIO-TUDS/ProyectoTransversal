@@ -4,7 +4,7 @@
  */
 package Modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -15,14 +15,23 @@ public class Alumno {
     private String nombre;
     private String apellido;
     private int dni;
-    private Date FechaNacimiento;
+    private LocalDate FechaNacimiento;
     private boolean estado;
 
     public Alumno() {
     }
+
+    public Alumno(String nombre, String apellido, int dni, LocalDate FechaNacimiento, boolean estado) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.FechaNacimiento = FechaNacimiento;
+        this.estado = estado;
+    }
+    
     
 
-    public Alumno(int legajo, String nombre, String apellido, int dni, Date FechaNacimiento, boolean estado) {
+    public Alumno(int legajo, String nombre, String apellido, int dni, LocalDate FechaNacimiento, boolean estado) {
         this.legajo = legajo;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -36,7 +45,7 @@ public class Alumno {
     }
 
     public void setLegajo(int legajo) {
-        this.legajo = legajo;
+    this.legajo = legajo;
     }
 
     public String getNombre() {
@@ -63,11 +72,11 @@ public class Alumno {
         this.dni = dni;
     }
 
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return FechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date FechaNacimiento) {
+    public void setFechaNacimiento(LocalDate FechaNacimiento) {
         this.FechaNacimiento = FechaNacimiento;
     }
 
