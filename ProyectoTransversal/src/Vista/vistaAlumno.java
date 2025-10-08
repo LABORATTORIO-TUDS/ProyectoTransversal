@@ -5,7 +5,7 @@
 package Vista;
 
 import Modelo.Alumno;
-import Persistencia.AlumnoData;
+import Persistencia.alumnoData;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
@@ -13,12 +13,12 @@ import javax.swing.JOptionPane;
  *
  * @author elias
  */
-public class mainFrame extends javax.swing.JFrame {
+public class vistaAlumno extends javax.swing.JFrame {
 
     /**
      * Creates new form mainFrame
      */
-    public mainFrame() {
+    public vistaAlumno() {
         initComponents();
     }
 
@@ -242,7 +242,7 @@ public class mainFrame extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
     int id = Integer.parseInt(txtfID.getText());
-    AlumnoData alumnoData = new AlumnoData();
+    alumnoData alumnoData = new alumnoData();
     Alumno al = alumnoData.buscarPorId(id);
     
     if (al != null) {
@@ -272,7 +272,7 @@ public class mainFrame extends javax.swing.JFrame {
         Alumno al = new Alumno(nombre, apellido, dni, fecha, activo);
 
         // Guardar en la base de datos
-        AlumnoData nuevoAlumno = new AlumnoData();
+        alumnoData nuevoAlumno = new alumnoData();
         nuevoAlumno.nuevoAlumno(al);
 
         lblEstado.setText("Alumno guardado correctamente ✅");
@@ -293,7 +293,7 @@ public class mainFrame extends javax.swing.JFrame {
         al.setLegajo(legajo);
 
         
-        AlumnoData data = new AlumnoData();
+        alumnoData data = new alumnoData();
         data.delete(al);
 
  
@@ -316,7 +316,7 @@ public class mainFrame extends javax.swing.JFrame {
 
             Alumno al = new Alumno(id, nombre, apellido, dni, fechaNac, true);
 
-            AlumnoData ad = new AlumnoData();
+            alumnoData ad = new alumnoData();
             ad.actualizar(al);
 
         } catch (NumberFormatException e) {
@@ -353,20 +353,21 @@ public class mainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainFrame().setVisible(true);
+                new vistaAlumno().setVisible(true);
             }
         });
     }
