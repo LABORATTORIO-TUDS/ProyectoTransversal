@@ -11,13 +11,13 @@ import java.time.LocalDate;
  * @author Victor
  */
 public class Inscripcion {
-    private int legajo;
+    private int legajoInscripto;
     private int nota;
     private Alumno alumno;
     private Materia materia;
 
     public Inscripcion(int legajo, int nota, Alumno alumno, Materia materia) {
-        this.legajo = legajoInscripto;
+        this.legajoInscripto = legajoInscripto;
         this.nota = nota;
         this.alumno = alumno;
         this.materia = materia;
@@ -33,11 +33,11 @@ public class Inscripcion {
     }
 
     public int getLegajo() {
-        return legajo;
+        return legajoInscripto;
     }
 
     public void setLegajo(int legajo) {
-        this.legajo = legajo;
+        this.legajoInscripto = legajo;
     }
 
     public int getNota() {
