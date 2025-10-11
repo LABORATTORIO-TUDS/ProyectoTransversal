@@ -85,6 +85,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jMMaterias.setText("Materias");
 
         jMenuItem2.setText("Formulario de Materias");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMMaterias.add(jMenuItem2);
 
         jMenuBar1.add(jMMaterias);
@@ -125,6 +130,13 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
        //ventanitaAlumno.setSize(jDesktopPane1.getSize());
         ventanitaAlumno.setLocation(05,05);
     }//GEN-LAST:event_Menuitem1AlumnosActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        vistaMaterias ventanitaMaterias = new vistaMaterias();
+        jDesktopPane1.add(ventanitaMaterias);
+        ventanitaMaterias.setVisible(true);
+        ventanitaMaterias.setLocation(05, 05);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
