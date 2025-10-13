@@ -6,7 +6,7 @@ package Vista;
 
 /**
  *
- * @author andre
+ * @author andrea
  */
 public class vistaMenuPrincipal extends javax.swing.JFrame {
     
