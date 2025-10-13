@@ -27,6 +27,11 @@ public class Materia {
         this.estado = estado;
     }
 
+    public Materia(String nombre) {
+        this.nombre = nombre;
+    }
+    
+
     public Materia() {
     }
 

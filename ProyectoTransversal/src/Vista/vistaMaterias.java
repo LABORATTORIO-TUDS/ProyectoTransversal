@@ -5,7 +5,7 @@
 package Vista;
 
 import Modelo.Materia;
-import Persistencia.MateriaData;
+import Persistencia.materiaData;
 import javax.swing.JOptionPane;
 
 public class vistaMaterias extends javax.swing.JInternalFrame {
@@ -25,6 +25,10 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         jTFID = new javax.swing.JTextField();
         jTFNombre = new javax.swing.JTextField();
         jBBuscar = new javax.swing.JButton();
+        lblAnio = new javax.swing.JLabel();
+        JTFanio = new javax.swing.JTextField();
+        lblEstado = new javax.swing.JLabel();
+        jcbActivo = new javax.swing.JCheckBox();
         jBLimpiar = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jBActualizar = new javax.swing.JButton();
@@ -40,12 +44,25 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
 
         jLabel2.setText("ID:");
 
-        jBBuscar.setText("Buscar");
-        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+        jTFID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBBuscarActionPerformed(evt);
+                jTFIDActionPerformed(evt);
             }
         });
+
+        jBBuscar.setText("Buscar");
+
+        lblAnio.setText("Año:");
+
+        JTFanio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFanioActionPerformed(evt);
+            }
+        });
+
+        lblEstado.setText("Estado:");
+
+        jcbActivo.setText("activo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -55,14 +72,22 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(lblAnio)
+                    .addComponent(lblEstado))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTFID, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(jBBuscar)
-                .addGap(19, 19, 19))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jcbActivo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTFNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                            .addComponent(jTFID, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                            .addComponent(JTFanio))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addComponent(jBBuscar)
+                        .addGap(19, 19, 19))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,7 +100,15 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAnio)
+                    .addComponent(JTFanio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEstado)
+                    .addComponent(jcbActivo))
+                .addGap(8, 8, 8))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addComponent(jBBuscar)
@@ -83,32 +116,12 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         );
 
         jBLimpiar.setText("Limpiar");
-        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBLimpiarActionPerformed(evt);
-            }
-        });
 
         jBGuardar.setText("Guardar");
-        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBGuardarActionPerformed(evt);
-            }
-        });
 
         jBActualizar.setText("Actualizar");
-        jBActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBActualizarActionPerformed(evt);
-            }
-        });
 
         jBBorrar.setText("Borrar");
-        jBBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBBorrarActionPerformed(evt);
-            }
-        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -156,11 +169,16 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
                     .addComponent(jBActualizar)
                     .addComponent(jBGuardar)
                     .addComponent(jBBorrar))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JTFanioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFanioActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_JTFanioActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
@@ -178,9 +196,9 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "El campo de nombre no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            Materia materia = new Materia(nombre, true);
-            MateriaData materiaData = new MateriaData();
-            materiaData.guardarMateria(materia);
+            Materia materia = new Materia(nombre);
+            materiaData materiaData = new materiaData();
+            materiaData.nuevaMateria(materia);
             jTFID.setText(String.valueOf(materia.getIdMateria()));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al guardar la materia: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -197,9 +215,9 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
                 return;
             }
 
-            Materia materia = new Materia(id, nombre, true);
-            MateriaData materiaData = new MateriaData();
-            materiaData.actualizarMateria(materia);
+            Materia materia = new Materia();
+            materiaData materiaData = new materiaData();
+            materiaData.actualizar(materia);
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "El ID debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -211,8 +229,8 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
     private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             int id = Integer.parseInt(jTFID.getText());
-            MateriaData materiaData = new MateriaData();
-            materiaData.borrarMateria(id);
+            materiaData materiaData = new materiaData();
+            materiaData.delete(id);
             jBLimpiarActionPerformed(evt);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingrese un ID válido para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -222,8 +240,8 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             int id = Integer.parseInt(jTFID.getText());
-            MateriaData materiaData = new MateriaData();
-            Materia materia = materiaData.buscarMateria(id);
+            materiaData materiaData = new materiaData();
+            Materia materia = materiaData.buscarPorId(id);
             if (materia != null) {
                 jTFNombre.setText(materia.getNombre());
             } else {
@@ -235,6 +253,7 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JTFanio;
     private javax.swing.JButton jBActualizar;
     private javax.swing.JButton jBBorrar;
     private javax.swing.JButton jBBuscar;
@@ -247,5 +266,8 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTFID;
     private javax.swing.JTextField jTFNombre;
+    private javax.swing.JCheckBox jcbActivo;
+    private javax.swing.JLabel lblAnio;
+    private javax.swing.JLabel lblEstado;
     // End of variables declaration//GEN-END:variables
 }

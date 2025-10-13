@@ -15,14 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class InscripcionData {
+public class inscripcionData {
     private Connection con = null;
-    private AlumnoData alumnoData;
+    private alumnoData alumnoData;
     private materiaData materiaData;
 
-    public InscripcionData() {
+    public inscripcionData() {
         con = Conexion.conectar();
-        alumnoData = new AlumnoData();
+        alumnoData = new alumnoData();
         materiaData = new materiaData();
     }
 public void inscribirAlumno(Inscripcion inscripcion) {

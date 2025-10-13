@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class materiaData {
   private Connection con = null;
-    private String tabla = "alumno";
+    private String tabla = "materia";
 
     public materiaData() {
 
@@ -132,13 +132,13 @@ public class materiaData {
         }
     }
 
-    public void delete(Materia mat) {
+    public void delete(int id) {
         String consulta = "DELETE FROM " + this.tabla + " WHERE idMateria = ?";
 
         try {
             PreparedStatement ps = con.prepareStatement(consulta);
 
-            ps.setInt(1, mat.getIdMateria());
+            ps.setInt(1, id);
             int res = ps.executeUpdate();
 
             if (res == 1) {
@@ -220,7 +220,7 @@ public class materiaData {
             ps.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia" + e.getMessage());
         }
 
     }

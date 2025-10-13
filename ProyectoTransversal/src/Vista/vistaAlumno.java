@@ -5,7 +5,7 @@
 package Vista;
 
 import Modelo.Alumno;
-import Persistencia.AlumnoData;
+import Persistencia.alumnoData;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
@@ -130,9 +130,9 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
                     .addComponent(lblApellido)
                     .addComponent(txtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDni))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDni)
+                    .addComponent(txtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFecha)
@@ -142,12 +142,11 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblActivo)
-                            .addComponent(chboxActivo))
-                        .addGap(18, 38, Short.MAX_VALUE))
+                            .addComponent(chboxActivo)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(lblEstado)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(lblEstado)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         lblTitulo.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 24)); // NOI18N
@@ -256,7 +255,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
 
             Alumno al = new Alumno(id, nombre, apellido, dni, fechaNac, true);
 
-            AlumnoData ad = new AlumnoData();
+            alumnoData ad = new alumnoData();
             ad.actualizar(al);
 
         } catch (NumberFormatException e) {
@@ -275,7 +274,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
             Alumno al = new Alumno();
             al.setLegajo(legajo);
 
-            AlumnoData data = new AlumnoData();
+            alumnoData data = new alumnoData();
             data.delete(al);
 
             txtfID.setText("");
@@ -299,7 +298,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
             Alumno al = new Alumno(nombre, apellido, dni, fecha, activo);
 
             // Guardar en la base de datos
-            AlumnoData nuevoAlumno = new AlumnoData();
+            alumnoData nuevoAlumno = new alumnoData();
             nuevoAlumno.nuevoAlumno(al);
 
             lblEstado.setText("Alumno guardado correctamente ✅");
@@ -312,7 +311,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         int id = Integer.parseInt(txtfID.getText());
-        AlumnoData alumnoData = new AlumnoData();
+        alumnoData alumnoData = new alumnoData();
         Alumno al = alumnoData.buscarPorId(id);
 
         if (al != null) {
@@ -334,38 +333,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vistaAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new vistaAlumno().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
