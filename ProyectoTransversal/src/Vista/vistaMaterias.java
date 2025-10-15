@@ -132,6 +132,11 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         );
 
         jBLimpiar.setText("Limpiar");
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +146,11 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         });
 
         jBActualizar.setText("Actualizar");
+        jBActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBActualizarActionPerformed(evt);
+            }
+        });
 
         jBBorrar.setText("Borrar");
         jBBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -268,38 +278,44 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID numérico válido para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
+    // TODO add your handling code here:
+
+    private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
+        // TODO add your handling code here:
+         try {
+            int id = Integer.parseInt(jTFID.getText());
+            int anio = Integer.parseInt(JTFanio.getText());
+            String nombre = jTFNombre.getText();
+            boolean est = jcbActivo.isSelected();
+
+            Materia materia = new Materia(id, nombre, anio, est);
+
+            materiaData ad = new materiaData();
+            ad.actualizar(materia);
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El año debe ser un numero valido");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar: " + e.getMessage());
+        }
+    }//GEN-LAST:event_jBActualizarActionPerformed
+
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
+        // TODO add your handling code here:
+        jTFID.setText("");
+        JTFanio.setText("");
+        jTFNombre.setText("");
+        jcbActivo.setSelected(false);
+    }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
     }
 
-    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {
-        jTFID.setText("");
-        jTFNombre.setText("");
-    }
 
   
 
-    private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
-            int id = Integer.parseInt(jTFID.getText());
-            String nombre = jTFNombre.getText();
 
-            if (nombre.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "El campo de nombre no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            Materia materia = new Materia();
-            materiaData materiaData = new materiaData();
-            materiaData.actualizar(materia);
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El ID debe ser un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al actualizar la materia: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
  
     
