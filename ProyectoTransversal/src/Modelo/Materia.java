@@ -27,8 +27,9 @@ public class Materia {
         this.estado = estado;
     }
 
-    public Materia(String nombre) {
+    public Materia(String nombre, int anio) {
         this.nombre = nombre;
+        this.anio = anio;
     }
     
 

@@ -50,7 +50,18 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
             }
         });
 
+        jTFNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTFNombreActionPerformed(evt);
+            }
+        });
+
         jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
+            }
+        });
 
         lblAnio.setText("Año:");
 
@@ -63,6 +74,11 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         lblEstado.setText("Estado:");
 
         jcbActivo.setText("activo");
+        jcbActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbActivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,10 +134,20 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         jBLimpiar.setText("Limpiar");
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBActualizar.setText("Actualizar");
 
         jBBorrar.setText("Borrar");
+        jBBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBorrarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -180,6 +206,69 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_JTFanioActionPerformed
 
+    private void jTFNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFNombreActionPerformed
+
+    private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
+        // TODO add your handling code here:
+           try {
+
+            int id = Integer.parseInt(jTFID.getText());
+
+            
+
+            materiaData data = new materiaData();
+            data.delete(id);
+
+            jTFID.setText("");
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un id válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBBorrarActionPerformed
+
+    private void jcbActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbActivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbActivoActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        // TODO add your handling code here:
+        try {
+            String nombre = jTFNombre.getText();
+            int anio = Integer.parseInt(JTFanio.getText());
+            if (nombre.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "El campo de nombre no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            Materia materia = new Materia(nombre, anio);
+            materiaData materiaData = new materiaData();
+            materiaData.nuevaMateria(materia);
+            jTFID.setText(String.valueOf(materia.getIdMateria()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar la materia: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        // TODO add your handling code here:
+        try {
+            int id = Integer.parseInt(jTFID.getText());
+            materiaData materiaData = new materiaData();
+            Materia materia = materiaData.buscarPorId(id);
+            if (materia != null) {
+                jTFNombre.setText(materia.getNombre());
+                JTFanio.setText(String.valueOf(materia.getAnio()));
+                
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "No se encontró ninguna materia con ese ID.", "Búsqueda sin resultados", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID numérico válido para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBBuscarActionPerformed
+
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {
         this.dispose();
     }
@@ -189,21 +278,7 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         jTFNombre.setText("");
     }
 
-    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
-            String nombre = jTFNombre.getText();
-            if (nombre.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "El campo de nombre no puede estar vacío.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            Materia materia = new Materia(nombre);
-            materiaData materiaData = new materiaData();
-            materiaData.nuevaMateria(materia);
-            jTFID.setText(String.valueOf(materia.getIdMateria()));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error al guardar la materia: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+  
 
     private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {
         try {
@@ -226,31 +301,9 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
         }
     }
 
-    private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
-            int id = Integer.parseInt(jTFID.getText());
-            materiaData materiaData = new materiaData();
-            materiaData.delete(id);
-            jBLimpiarActionPerformed(evt);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Ingrese un ID válido para borrar.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+ 
+    
 
-    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {
-        try {
-            int id = Integer.parseInt(jTFID.getText());
-            materiaData materiaData = new materiaData();
-            Materia materia = materiaData.buscarPorId(id);
-            if (materia != null) {
-                jTFNombre.setText(materia.getNombre());
-            } else {
-                JOptionPane.showMessageDialog(this, "No se encontró ninguna materia con ese ID.", "Búsqueda sin resultados", JOptionPane.INFORMATION_MESSAGE);
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese un ID numérico válido para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTFanio;
