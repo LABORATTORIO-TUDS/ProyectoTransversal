@@ -39,6 +39,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMInscripciones = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem_Inscripciones = new javax.swing.JMenuItem();
         jMCargaDeNotas = new javax.swing.JMenu();
         jMConsultas = new javax.swing.JMenu();
 
@@ -99,6 +100,14 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jMenuItem3.setText("Manejo de Inscripciones");
         jMInscripciones.add(jMenuItem3);
 
+        jMenuItem_Inscripciones.setText("Inscripciones");
+        jMenuItem_Inscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem_InscripcionesActionPerformed(evt);
+            }
+        });
+        jMInscripciones.add(jMenuItem_Inscripciones);
+
         jMenuBar1.add(jMInscripciones);
 
         jMCargaDeNotas.setText("Carga de Notas");
@@ -138,6 +147,13 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         ventanitaMaterias.setLocation(05, 05);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem_InscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_InscripcionesActionPerformed
+        vistaInscripcion inscripcion = new vistaInscripcion();
+        jDesktopPane1.add(inscripcion);
+        inscripcion.setVisible(true);
+        inscripcion.setLocation(05,05);       
+    }//GEN-LAST:event_jMenuItem_InscripcionesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,5 +192,6 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem_Inscripciones;
     // End of variables declaration//GEN-END:variables
 }
