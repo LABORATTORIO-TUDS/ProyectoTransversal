@@ -75,6 +75,12 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
 
         lblEstado.setText("Estado:");
 
+        txtfFecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfFechaActionPerformed(evt);
+            }
+        });
+
         lblApellido.setText("Apellido:");
 
         lblDni.setText("Dni:");
@@ -287,23 +293,23 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         try {
-            // Obtener los valores de los campos
+            
             String nombre = txtfNombre.getText();
             String apellido = txtfApellido.getText();
             int dni = Integer.parseInt(txtfDNI.getText());
-            LocalDate fecha = LocalDate.parse(txtfFecha.getText()); // formato yyyy-MM-dd
+            LocalDate fecha = LocalDate.parse(txtfFecha.getText()); 
             boolean activo = chboxActivo.isSelected();
 
-            // Crear objeto Alumno
+            
             Alumno al = new Alumno(nombre, apellido, dni, fecha, activo);
 
-            // Guardar en la base de datos
+            
             alumnoData nuevoAlumno = new alumnoData();
             nuevoAlumno.nuevoAlumno(al);
 
-            lblEstado.setText("Alumno guardado correctamente ✅");
+            lblEstado.setText("Alumno guardado correctamente ");
         } catch (NumberFormatException e) {
-            lblEstado.setText("⚠️ El DNI debe ser un número válido");
+            lblEstado.setText("️ El DNI debe ser un número válido");
         }
 
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -329,6 +335,10 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void txtfFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfFechaActionPerformed
 
     /**
      * @param args the command line arguments
