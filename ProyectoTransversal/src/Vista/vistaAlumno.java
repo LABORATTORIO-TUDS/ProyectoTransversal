@@ -6,8 +6,10 @@ package Vista;
 
 import Modelo.Alumno;
 import Persistencia.alumnoData;
+import Persistencia.alumnoData;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import java.time.ZoneId;
 
 /**
  *
@@ -40,12 +42,12 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
         lblActivo = new javax.swing.JLabel();
         lblEstado = new javax.swing.JLabel();
         txtfNombre = new javax.swing.JTextField();
-        txtfFecha = new javax.swing.JTextField();
         chboxActivo = new javax.swing.JCheckBox();
         lblApellido = new javax.swing.JLabel();
         txtfApellido = new javax.swing.JTextField();
         lblDni = new javax.swing.JLabel();
         txtfDNI = new javax.swing.JTextField();
+        jdcNacimiento = new com.toedter.calendar.JDateChooser();
         lblTitulo = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
@@ -75,12 +77,6 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
 
         lblEstado.setText("Estado:");
 
-        txtfFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfFechaActionPerformed(evt);
-            }
-        });
-
         lblApellido.setText("Apellido:");
 
         lblDni.setText("Dni:");
@@ -95,6 +91,11 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblActivo)
+                        .addGap(18, 18, 18)
+                        .addComponent(chboxActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,14 +110,8 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
                             .addComponent(txtfApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                             .addComponent(txtfNombre, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtfID, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtfDNI)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblActivo)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chboxActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtfDNI)
+                            .addComponent(jdcNacimiento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -139,19 +134,18 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblDni)
                     .addComponent(txtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFecha)
-                    .addComponent(txtfFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addComponent(lblFecha)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblEstado))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jdcNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblActivo)
-                            .addComponent(chboxActivo)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lblEstado)))
+                            .addComponent(chboxActivo))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
@@ -208,7 +202,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
+                .addContainerGap(207, Short.MAX_VALUE)
                 .addComponent(btnActualizar)
                 .addGap(18, 18, 18)
                 .addComponent(btnBorrar)
@@ -246,7 +240,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
         txtfNombre.setText("");
         txtfApellido.setText("");
         txtfDNI.setText("");
-        txtfFecha.setText("");
+        jdcNacimiento.setDate(null);
         chboxActivo.setSelected(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
@@ -257,7 +251,14 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
             int dni = Integer.parseInt(txtfDNI.getText());
             String apellido = txtfApellido.getText();
             String nombre = txtfNombre.getText();
-            LocalDate fechaNac = LocalDate.parse(txtfFecha.getText()); // formato yyyy-MM-dd
+             java.util.Date fechaSeleccionada = jdcNacimiento.getDate();
+        if (fechaSeleccionada == null) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fecha de nacimiento");
+            return;
+        }
+        LocalDate fechaNac = fechaSeleccionada.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate(); // formato yyyy-MM-dd
 
             Alumno al = new Alumno(id, nombre, apellido, dni, fechaNac, true);
 
@@ -297,7 +298,14 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
             String nombre = txtfNombre.getText();
             String apellido = txtfApellido.getText();
             int dni = Integer.parseInt(txtfDNI.getText());
-            LocalDate fecha = LocalDate.parse(txtfFecha.getText()); 
+            java.util.Date fechaSeleccionada = jdcNacimiento.getDate();
+        if (fechaSeleccionada == null) {
+            lblEstado.setText("Debe seleccionar una fecha de nacimiento");
+            return;
+        }
+        LocalDate fecha = fechaSeleccionada.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate(); 
             boolean activo = chboxActivo.isSelected();
 
             
@@ -325,7 +333,10 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
             txtfApellido.setText(al.getApellido());
             txtfDNI.setText(String.valueOf(al.getDni()));
 
-            txtfFecha.setText(al.getFechaNacimiento().toString());
+            java.util.Date fecha = java.util.Date.from(
+                    al.getFechaNacimiento().atStartOfDay(ZoneId.systemDefault()).toInstant()
+            );
+            jdcNacimiento.setDate(fecha);
 
         } else {
             JOptionPane.showMessageDialog(null, "No se encontró alumno con el ID: " + id);
@@ -335,10 +346,6 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
-
-    private void txtfFechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfFechaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,6 +361,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox chboxActivo;
     private javax.swing.JButton jBSalir;
     private javax.swing.JPanel jPanel1;
+    private com.toedter.calendar.JDateChooser jdcNacimiento;
     private javax.swing.JLabel lblActivo;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblDni;
@@ -364,7 +372,6 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtfApellido;
     private javax.swing.JTextField txtfDNI;
-    private javax.swing.JTextField txtfFecha;
     private javax.swing.JTextField txtfID;
     private javax.swing.JTextField txtfNombre;
     // End of variables declaration//GEN-END:variables

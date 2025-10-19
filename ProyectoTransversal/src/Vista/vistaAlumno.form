@@ -40,7 +40,7 @@
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="253" max="32767" attributes="0"/>
+              <EmptySpace pref="207" max="32767" attributes="0"/>
               <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnBorrar" min="-2" max="-2" attributes="0"/>
@@ -94,6 +94,12 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblActivo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="chboxActivo" min="-2" pref="93" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -110,15 +116,7 @@
                               <Component id="txtfNombre" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtfID" alignment="0" max="32767" attributes="0"/>
                               <Component id="txtfDNI" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblActivo" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="chboxActivo" min="-2" pref="93" max="-2" attributes="0"/>
-                              <Component id="txtfFecha" min="-2" pref="304" max="-2" attributes="0"/>
+                              <Component id="jdcNacimiento" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -150,22 +148,20 @@
                       <Component id="lblDni" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="txtfDNI" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtfFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jdcNacimiento" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="lblActivo" min="-2" max="-2" attributes="0"/>
                               <Component id="chboxActivo" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblEstado" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="38" max="32767" attributes="0"/>
@@ -211,11 +207,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtfNombre">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtfFecha">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfFechaActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JCheckBox" name="chboxActivo">
         </Component>
         <Component class="javax.swing.JLabel" name="lblApellido">
@@ -231,6 +222,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtfDNI">
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jdcNacimiento">
         </Component>
       </SubComponents>
     </Container>
