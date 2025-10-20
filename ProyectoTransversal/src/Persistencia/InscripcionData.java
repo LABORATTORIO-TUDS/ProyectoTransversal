@@ -20,7 +20,7 @@ public class InscripcionData {
     private AlumnoData alumnoData;
     private materiaData materiaData;
 
-    public inscripcionData() {
+    public InscripcionData() {
         con = Conexion.conectar();
         alumnoData = new AlumnoData();
         materiaData = new materiaData();

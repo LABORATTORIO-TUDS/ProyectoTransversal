@@ -44,12 +44,6 @@ public class vistaMaterias extends javax.swing.JInternalFrame {
 
         jLabel2.setText("ID:");
 
-        jTFID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTFIDActionPerformed(evt);
-            }
-        });
-
         jTFNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombreActionPerformed(evt);

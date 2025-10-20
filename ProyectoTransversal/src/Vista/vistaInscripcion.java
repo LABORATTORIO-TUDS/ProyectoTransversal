@@ -23,7 +23,7 @@ public class vistaInscripcion extends javax.swing.JInternalFrame {
     public vistaInscripcion(){
         initComponents();
         aD = new AlumnoData();
-        iD = new inscripcionData();
+        iD = new InscripcionData();
         mD = new materiaData();
         
         ButtonGroup grupoFiltros = new ButtonGroup();

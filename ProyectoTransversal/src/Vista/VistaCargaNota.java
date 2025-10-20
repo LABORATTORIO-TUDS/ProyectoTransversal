@@ -7,7 +7,7 @@ package Vista;
 import Modelo.*;
 
 import Persistencia.AlumnoData;
-import Persistencia.inscripcionData;
+import Persistencia.InscripcionData;
 import Persistencia.materiaData;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class VistaCargaNota extends javax.swing.JInternalFrame {
 
     private final AlumnoData alData;
-    private final inscripcionData iData;
+    private final InscripcionData iData;
     private Inscripcion inscr;
 
     /**
@@ -28,7 +28,7 @@ public class VistaCargaNota extends javax.swing.JInternalFrame {
     public VistaCargaNota() {
         initComponents();
         this.alData = new AlumnoData();
-        this.iData = new inscripcionData();
+        this.iData = new InscripcionData();
         cbMaterias.removeAllItems();
         btnSubirNota.setEnabled(false);
         cargarAlumnos();
