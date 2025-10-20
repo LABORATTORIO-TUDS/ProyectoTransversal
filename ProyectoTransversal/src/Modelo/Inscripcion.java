@@ -4,10 +4,6 @@
  */
 package Modelo;
 
-/**
- *
- * @author Victor
- */
 public class Inscripcion {
     private int legajoInscripto;
     private int nota;
@@ -15,7 +11,7 @@ public class Inscripcion {
     private Materia materia;
 
     public Inscripcion(int legajo, int nota, Alumno alumno, Materia materia) {
-        this.legajoInscripto = legajoInscripto;
+        this.legajoInscripto = legajo;
         this.nota = nota;
         this.alumno = alumno;
         this.materia = materia;
@@ -61,11 +57,4 @@ public class Inscripcion {
     public void setMateria(Materia materia) {
         this.materia = materia;
     }
-
-    
-
-  
-
- 
-    
 }
