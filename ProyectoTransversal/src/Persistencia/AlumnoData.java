@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  *
  * @author crist
  */
-public class alumnoData {
+public class AlumnoData {
 
     private Connection con = null;
     private String tabla = "alumno";
 
-    public alumnoData() {
+    public AlumnoData() {
 
         con = Conexion.conectar();
     }

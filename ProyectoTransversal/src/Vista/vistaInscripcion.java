@@ -16,13 +16,13 @@ import javax.swing.*;
  */
 public class vistaInscripcion extends javax.swing.JInternalFrame {
 
-    private alumnoData aD;
-    private inscripcionData iD;
+    private AlumnoData aD;
+    private InscripcionData iD;
     private materiaData mD;
     
     public vistaInscripcion(){
         initComponents();
-        aD = new alumnoData();
+        aD = new AlumnoData();
         iD = new inscripcionData();
         mD = new materiaData();
         

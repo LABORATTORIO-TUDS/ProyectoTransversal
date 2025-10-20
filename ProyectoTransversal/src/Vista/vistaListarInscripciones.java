@@ -3,21 +3,21 @@ package Vista;
 import Modelo.Alumno;
 import Modelo.Inscripcion;
 import Modelo.Materia;
-import Persistencia.alumnoData;
-import Persistencia.inscripcionData;
+import Persistencia.AlumnoData;
+import Persistencia.InscripcionData;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class vistaListarInscripciones extends javax.swing.JInternalFrame {
 
-    private alumnoData aData;
-    private inscripcionData iData;
+    private AlumnoData aData;
+    private InscripcionData iData;
     private DefaultTableModel tableModel;
 
     public vistaListarInscripciones() {
         initComponents();
-        aData = new alumnoData();
-        iData = new inscripcionData();
+        aData = new AlumnoData();
+        iData = new InscripcionData();
 
         tableModel = new DefaultTableModel() {
             @Override

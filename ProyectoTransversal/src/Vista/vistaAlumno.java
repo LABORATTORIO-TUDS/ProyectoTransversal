@@ -5,8 +5,8 @@
 package Vista;
 
 import Modelo.Alumno;
-import Persistencia.alumnoData;
-import Persistencia.alumnoData;
+import Persistencia.AlumnoData;
+import Persistencia.AlumnoData;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import java.time.ZoneId;
@@ -262,7 +262,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
 
             Alumno al = new Alumno(id, nombre, apellido, dni, fechaNac, true);
 
-            alumnoData ad = new alumnoData();
+            AlumnoData ad = new AlumnoData();
             ad.actualizar(al);
 
         } catch (NumberFormatException e) {
@@ -281,7 +281,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
             Alumno al = new Alumno();
             al.setLegajo(legajo);
 
-            alumnoData data = new alumnoData();
+            AlumnoData data = new AlumnoData();
             data.delete(al);
 
             txtfID.setText("");
@@ -312,7 +312,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
             Alumno al = new Alumno(nombre, apellido, dni, fecha, activo);
 
             
-            alumnoData nuevoAlumno = new alumnoData();
+            AlumnoData nuevoAlumno = new AlumnoData();
             nuevoAlumno.nuevoAlumno(al);
 
             lblEstado.setText("Alumno guardado correctamente ");
@@ -325,7 +325,7 @@ public class vistaAlumno extends javax.swing.JInternalFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         int id = Integer.parseInt(txtfID.getText());
-        alumnoData alumnoData = new alumnoData();
+        AlumnoData alumnoData = new AlumnoData();
         Alumno al = alumnoData.buscarPorId(id);
 
         if (al != null) {
