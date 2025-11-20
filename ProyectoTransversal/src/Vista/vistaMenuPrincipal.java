@@ -29,6 +29,7 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem_Inscripciones = new javax.swing.JMenuItem();
         jMCargaDeNotas = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMConsultas = new javax.swing.JMenu();
         jMIListarInscripciones = new javax.swing.JMenuItem();
 
@@ -100,6 +101,15 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMInscripciones);
 
         jMCargaDeNotas.setText("Carga de Notas");
+
+        jMenuItem1.setText("Cargar notas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMCargaDeNotas.add(jMenuItem1);
+
         jMenuBar1.add(jMCargaDeNotas);
 
         jMConsultas.setText("Consultas");
@@ -159,6 +169,13 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
         vistaListado.setLocation(05,05);
     }//GEN-LAST:event_jMIListarInscripcionesActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        VistaCargaNota vcn = new VistaCargaNota();
+        jDesktopPane1.add(vcn);
+        vcn.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -182,10 +199,11 @@ public class vistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMArchivos;
     private javax.swing.JMenu jMCargaDeNotas;
     private javax.swing.JMenu jMConsultas;
-    private javax.swing.JMenu jMInscripciones;
     private javax.swing.JMenuItem jMIListarInscripciones;
+    private javax.swing.JMenu jMInscripciones;
     private javax.swing.JMenu jMMaterias;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem_Inscripciones;

@@ -18,7 +18,7 @@ public class Conexion {
 
     private static final String URL = "jdbc:mysql://localhost:3306/gp13universidadulp";
     private static final String USUARIO = "root";
-    private static final String CLAVE = "";
+    private static final String CLAVE = "root";
 
     public static Connection conectar() {
         if (c == null) {
